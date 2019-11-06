@@ -35,6 +35,9 @@ Requires:
 1. Running `plot_solution.py coordinates_file.txt solution.txt` will show the total round-trip distance for that solution using the Euclidean metric.
 2. Running `plot_solution.py coordinates_file.txt solution.txt plot.svg` will plot the points and the travelling salesman solution  to `plot.svg`.
 
+Example solution with 500 uniform random points
+![Example travelling salesman solution](https://github.com/agentlans/minitsp/blob/master/example/Random500.svg)
+
 # Author, license
 Copyright (C) 2019 Alan Tseng
 
