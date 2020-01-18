@@ -12,6 +12,12 @@ double sq_distance(Coordinates *coords, int i, int j)
 	return d;
 }
 
+// Distance between points i and j
+double distance(Coordinates *coords, int i, int j)
+{
+	return sqrt(sq_distance(coords, i, j));
+}
+
 // Returns the distance of a travelling salesman problem solution
 // result is pointer to integer array containing indices of the points in the path in order
 double round_trip_distance(int **result, Coordinates *coords)
@@ -19,8 +25,8 @@ double round_trip_distance(int **result, Coordinates *coords)
 	double d = 0;
 	int num_pts = coords->rows;
 	for (int i = 0; i < num_pts; ++i) {
-		d += sqrt(sq_distance(coords, 
-			(*result)[i], (*result)[(i+1) % num_pts]));
+		d += distance(coords, 
+			(*result)[i], (*result)[(i+1) % num_pts]);
 	}
 	return d;
 }
@@ -82,21 +88,21 @@ void check_shortcuts(int **result, Coordinates *coords)
 		int v_i = (*result)[i];
 
 		// Distance from vertex at result[i-1] to result[i]
-		double dist_before_i = sq_distance(coords, v_i1, v_i);
+		double dist_before_i = distance(coords, v_i1, v_i);
 
-		for (int j = i+1; j < num_pts; ++j) {
+		for (int j = i+1; j <= num_pts; ++j) {
 			int v_j1 = (*result)[j-1];
 			int v_j = (*result)[j % num_pts];
 
 			// Distance from vertex at result[j-1] to result[j]
-			double dist_before_j = sq_distance(coords, v_j1, v_j);
+			double dist_before_j = distance(coords, v_j1, v_j);
 
 			// Distance before we reverse [i, j)
 			double original_dist = dist_before_i + dist_before_j;
 			// Distance after we reverse [i, j)
 			double new_dist =
-				sq_distance(coords, v_i1, v_j1) +
-				sq_distance(coords, v_i, v_j);
+				distance(coords, v_i1, v_j1) +
+				distance(coords, v_i, v_j);
 
 			// If new distance is shorter then we reverse
 			if (new_dist < original_dist) {
