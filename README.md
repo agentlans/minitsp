@@ -14,7 +14,7 @@ Requires:
 ## Find solution
 1. Prepare file containing the coordinates of each point (one point per line, coordinates separated by whitespace).
 2. Run `./minitsp your_coordinate_file.txt`
-- (optional) You can choose how many times the solution should be checked for shortcuts (default 20):
+- (optional) You can choose how many times the solution should be checked for shortcuts (default 10):
 ```
 ./minitsp your_coordinate_file.txt number_of_rounds
 ```
