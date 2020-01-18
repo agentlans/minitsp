@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	char *filename = argv[1];
-	int shortcut_rounds = 20; // default number of rounds
+	int shortcut_rounds = 10; // default number of rounds
 	if (argc == 3) {
 		shortcut_rounds = atoi(argv[2]);
 	}
