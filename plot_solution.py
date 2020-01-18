@@ -6,6 +6,7 @@
 # a file containing the indices of points in the solution.
 
 import sys
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 import pylab as pl
@@ -49,7 +50,7 @@ def distance(t1, t2):
   d = 0
   for i in range(len(t1)):
     d += pow(t1[i] - t2[i], 2)
-  return d
+  return math.sqrt(d)
 
 # Lines to plot
 num_pts = len(soln)
